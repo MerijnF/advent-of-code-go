@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/merijnf/advent-of-code-go/utility"
+	"github.com/merijnf/advent-of-code-go/utilities"
 )
 
 type card struct {
@@ -18,7 +18,7 @@ type card struct {
 }
 
 func main() {
-	inputLines := utility.LoadInputStringLines(2023, 4)
+	inputLines := utilities.LoadInputStringLines(2023, 4)
 	cards := make([]card, len(inputLines))
 	for i, line := range inputLines {
 		cards[i] = parseCard(line)
@@ -49,7 +49,7 @@ func parseCard(line string) card {
 	numbersStr := splitNumbers[1]
 	//parse id
 	id, error := strconv.Atoi(strings.Trim(idStr[4:], " "))
-	utility.CheckError(error)
+	utilities.CheckError(error)
 	winningNumbersStrArr := strings.Split(winningNumbersStr, " ")
 	numberStrArr := strings.Split(numbersStr, " ")
 	winningNumbersStrArr = slices.DeleteFunc(winningNumbersStrArr, isEmpty)
@@ -57,11 +57,11 @@ func parseCard(line string) card {
 	winningNumbersArr := convertAllToInt(winningNumbersStrArr)
 	numbersArr := convertAllToInt(numberStrArr)
 	card := card{id: id, winningNumbers: winningNumbersArr, numbers: numbersArr, count: 1}
-	card.winningNumberCount = card.CalculateWinningNumberCount()
+	card.winningNumberCount = card.calculateWinningNumberCount()
 	return card
 }
 
-func (card card) CalculateWinningNumberCount() int {
+func (card card) calculateWinningNumberCount() int {
 	value := 0
 
 	for _, winningNumber := range card.winningNumbers {
@@ -86,7 +86,7 @@ func convertAllToInt(textArr []string) []int {
 	numbers := make([]int, len(textArr))
 	for i, text := range textArr {
 		number, error := strconv.Atoi(text)
-		utility.CheckError(error)
+		utilities.CheckError(error)
 		numbers[i] = number
 	}
 	return numbers

@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/merijnf/advent-of-code-go/utility"
+	"github.com/merijnf/advent-of-code-go/utilities"
 )
 
 type card struct {
@@ -16,7 +16,7 @@ type card struct {
 }
 
 func main() {
-	inputLines := utility.LoadInputStringLines(2023, 4)
+	inputLines := utilities.LoadInputStringLines(2023, 4)
 	sum := 0
 	cards := make([]card, len(inputLines))
 	for i, line := range inputLines {
@@ -35,7 +35,7 @@ func parseCard(line string) card {
 	numbersStr := splitNumbers[1]
 	//parse id
 	id, error := strconv.Atoi(strings.Trim(idStr[4:], " "))
-	utility.CheckError(error)
+	utilities.CheckError(error)
 	winningNumbersStrArr := strings.Split(winningNumbersStr, " ")
 	numberStrArr := strings.Split(numbersStr, " ")
 	winningNumbersStrArr = slices.DeleteFunc(winningNumbersStrArr, isEmpty)
@@ -74,7 +74,7 @@ func convertAllToInt(textArr []string) []int {
 	numbers := make([]int, len(textArr))
 	for i, text := range textArr {
 		number, error := strconv.Atoi(text)
-		utility.CheckError(error)
+		utilities.CheckError(error)
 		numbers[i] = number
 	}
 	return numbers
