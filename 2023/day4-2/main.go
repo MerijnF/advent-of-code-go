@@ -10,18 +10,32 @@ import (
 )
 
 type card struct {
-	id             int
-	numbers        []int
-	winningNumbers []int
+	id                 int
+	numbers            []int
+	winningNumbers     []int
+	winningNumberCount int
+	count              int
 }
 
 func main() {
 	inputLines := utility.LoadInputStringLines(2023, 4)
-	sum := 0
 	cards := make([]card, len(inputLines))
 	for i, line := range inputLines {
 		cards[i] = parseCard(line)
-		sum = sum + cards[i].CalculateCardValue()
+	}
+
+	for i, card := range cards {
+		for j := 1; j <= card.winningNumberCount; j++ {
+			index := i + j
+			if index > len(cards)-1 {
+				break
+			}
+			cards[i+j].count = cards[i+j].count + 1*card.count
+		}
+	}
+	sum := 0
+	for _, card := range cards {
+		sum = sum + card.count
 	}
 
 	fmt.Println("final value: " + strconv.Itoa(sum))
@@ -42,20 +56,18 @@ func parseCard(line string) card {
 	numberStrArr = slices.DeleteFunc(numberStrArr, isEmpty)
 	winningNumbersArr := convertAllToInt(winningNumbersStrArr)
 	numbersArr := convertAllToInt(numberStrArr)
-	return card{id: id, winningNumbers: winningNumbersArr, numbers: numbersArr}
+	card := card{id: id, winningNumbers: winningNumbersArr, numbers: numbersArr, count: 1}
+	card.winningNumberCount = card.CalculateWinningNumberCount()
+	return card
 }
 
-func (card card) CalculateCardValue() int {
+func (card card) CalculateWinningNumberCount() int {
 	value := 0
 
 	for _, winningNumber := range card.winningNumbers {
 		for _, number := range card.numbers {
 			if number == winningNumber {
-				if value == 0 {
-					value = 1
-				} else {
-					value = value * 2
-				}
+				value = value + 1
 			}
 		}
 	}
