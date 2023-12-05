@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	dat, err := os.ReadFile("input.txt")
+	dat, err := os.ReadFile("../../input/2023/day1/input.txt")
 	check(err)
 	datString := string(dat)
 	lines := strings.Split(datString, "\n")

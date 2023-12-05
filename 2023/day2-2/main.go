@@ -16,7 +16,7 @@ func check(err error) {
 
 func main() {
 	fmt.Println("loading game data")
-	dat, err := os.ReadFile("input.txt")
+	dat, err := os.ReadFile("../../input/2023/day2/input.txt")
 	check(err)
 	datString := string(dat)
 	lines := strings.Split(datString, "\n")
