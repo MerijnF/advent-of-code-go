@@ -53,8 +53,8 @@ func extrapolateRange(numbers []int) int {
 	slices.Reverse(extrapolated)
 	extrapolatedValue := 0
 	for _, level := range extrapolated {
-		last := level[len(level)-1]
-		extrapolatedValue = extrapolatedValue + last
+		first := level[0]
+		extrapolatedValue = first - extrapolatedValue
 	}
 	return extrapolatedValue
 }
