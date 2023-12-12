@@ -17,7 +17,7 @@ func check(err error) {
 func main() {
 	fmt.Println("loading input data")
 	//dat, err := os.ReadFile("input-test.txt")
-	dat, err := os.ReadFile("../../input/2023/day3/input.txt")
+	dat, err := os.ReadFile("../../input/2023/day03/input.txt")
 	check(err)
 	dataString := string(dat)
 	lines := strings.Split(strings.ReplaceAll(dataString, "\r\n", "\n"), "\n")

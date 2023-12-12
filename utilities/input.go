@@ -10,6 +10,9 @@ import (
 func LoadInputString(year int, day int) string {
 	yearStr := strconv.Itoa(year)
 	dayStr := strconv.Itoa(day)
+	if len(dayStr) == 1 {
+		dayStr = "0" + dayStr
+	}
 
 	fmt.Println("loading input data " + yearStr + " day" + dayStr)
 	//dat, err := os.ReadFile("input-test.txt")
