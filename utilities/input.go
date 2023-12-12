@@ -15,7 +15,7 @@ func LoadInputString(year int, day int) string {
 	}
 
 	fmt.Println("loading input data " + yearStr + " day" + dayStr)
-	//dat, err := os.ReadFile("input-test.txt")
+
 	dat, err := os.ReadFile("../../input/" + yearStr + "/day" + dayStr + "/input.txt")
 	CheckError(err)
 	return string(dat)
