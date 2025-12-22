@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/merijnf/advent-of-code-go/internal/y2025d01"
+	"github.com/merijnf/advent-of-code-go/internal/y2025d02"
 )
 
 type DayPart struct {
@@ -19,8 +20,12 @@ func main() {
 		result = y2025d01.Part1(testMode)
 	case DayPart{1, 2}:
 		result = y2025d01.Part2(testMode)
+	case DayPart{2, 1}:
+		result = y2025d02.Part1(testMode)
+	case DayPart{2, 2}:
+		result = y2025d02.Part2(testMode)
 	default:
-		result = "Not implemented"
+		result = "No solver configured for this day/part"
 	}
 
 	fmt.Println("Solution:", result)
