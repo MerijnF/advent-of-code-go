@@ -1,19 +1,14 @@
-package y2025d02
+package d2
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
-	"github.com/merijnf/advent-of-code-go/pkg/input"
+	"github.com/merijnf/advent-of-code-go/pkg/solver"
 )
 
-const left = "L"
-const right = "R"
-
-func Part1(testMode bool) string {
-	input := input.ReadInput(2025, 2, testMode)
-	productRanges := strings.Split(input, ",")
+func Part1(ctx solver.PuzzleContext) (string, error) {
+	productRanges := strings.Split(ctx.Input, ",")
 
 	idSum := 0
 
@@ -43,13 +38,12 @@ func Part1(testMode bool) string {
 			}
 		}
 	}
-	return strconv.Itoa(idSum)
+	return strconv.Itoa(idSum), nil
 
 }
 
-func Part2(testMode bool) string {
-	input := input.ReadInput(2025, 2, testMode)
-	productRanges := strings.Split(input, ",")
+func Part2(ctx solver.PuzzleContext) (string, error) {
+	productRanges := strings.Split(ctx.Input, ",")
 
 	idSum := 0
 
@@ -65,7 +59,6 @@ func Part2(testMode bool) string {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(productRange)
 
 		for id := firstIdNum; id <= lastIdNum; id++ {
 			idStr := strconv.Itoa(id)
@@ -77,12 +70,11 @@ func Part2(testMode bool) string {
 				firstPart := idStr[:length/divisor]
 				computed := strings.Repeat(firstPart, divisor)
 				if computed == idStr {
-					fmt.Println(strconv.Itoa(id))
 					idSum += id
 					break
 				}
 			}
 		}
 	}
-	return strconv.Itoa(idSum)
+	return strconv.Itoa(idSum), nil
 }

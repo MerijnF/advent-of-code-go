@@ -1,18 +1,17 @@
-package y2025d01
+package d1
 
 import (
 	"strconv"
 	"strings"
 
-	"github.com/merijnf/advent-of-code-go/pkg/input"
+	"github.com/merijnf/advent-of-code-go/pkg/solver"
 )
 
 const left = "L"
 const right = "R"
 
-func Part1(testMode bool) string {
-	input := input.ReadInput(2025, 1, testMode)
-	lines := strings.Split(input, "\r\n")
+func Part1(ctx solver.PuzzleContext) (string, error) {
+	lines := strings.Split(ctx.Input, "\r\n")
 	position := 50
 	atZero := 0
 	for _, line := range lines {
@@ -42,12 +41,11 @@ func Part1(testMode bool) string {
 		}
 	}
 
-	return strconv.Itoa(atZero)
+	return strconv.Itoa(atZero), nil
 }
 
-func Part2(testMode bool) string {
-	input := input.ReadInput(2025, 1, testMode)
-	lines := strings.Split(input, "\r\n")
+func Part2(ctx solver.PuzzleContext) (string, error) {
+	lines := strings.Split(ctx.Input, "\r\n")
 	position := 50
 	zeroCount := 0
 	atZero := false
@@ -92,5 +90,5 @@ func Part2(testMode bool) string {
 		}
 	}
 
-	return strconv.Itoa(zeroCount)
+	return strconv.Itoa(zeroCount), nil
 }
