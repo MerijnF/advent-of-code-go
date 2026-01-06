@@ -4,15 +4,15 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/merijnf/advent-of-code-go/pkg/helper/str"
 	"github.com/merijnf/advent-of-code-go/pkg/solver"
+	"github.com/merijnf/advent-of-code-go/pkg/utils/strutil"
 )
 
 const left = "L"
 const right = "R"
 
 func Part1(ctx solver.PuzzleContext) (string, error) {
-	lines := str.SplitLinesAndNormalize(ctx.Input, false)
+	lines := strutil.SplitLinesAndNormalize(ctx.Input, false)
 	position := 50
 	atZero := 0
 	for _, line := range lines {
@@ -46,7 +46,7 @@ func Part1(ctx solver.PuzzleContext) (string, error) {
 }
 
 func Part2(ctx solver.PuzzleContext) (string, error) {
-	lines := str.SplitLinesAndNormalize(ctx.Input, false)
+	lines := strutil.SplitLinesAndNormalize(ctx.Input, false)
 	position := 50
 	zeroCount := 0
 	atZero := false

@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/merijnf/advent-of-code-go/pkg/helper/str"
 	"github.com/merijnf/advent-of-code-go/pkg/solver"
+	"github.com/merijnf/advent-of-code-go/pkg/utils/strutil"
 )
 
 func Part1(ctx solver.PuzzleContext) (string, error) {
@@ -17,7 +17,7 @@ func Part2(ctx solver.PuzzleContext) (string, error) {
 }
 
 func solve(input string, joltCount int) (string, error) {
-	banks := str.SplitLinesAndNormalizeSeq(input, false)
+	banks := strutil.SplitLinesAndNormalizeSeq(input, false)
 
 	solution := 0
 	for bank := range banks {
