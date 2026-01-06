@@ -4,6 +4,7 @@ import (
 	"github.com/merijnf/advent-of-code-go/internal/y2025/d1"
 	"github.com/merijnf/advent-of-code-go/internal/y2025/d2"
 	"github.com/merijnf/advent-of-code-go/internal/y2025/d3"
+	"github.com/merijnf/advent-of-code-go/internal/y2025/d4"
 	"github.com/merijnf/advent-of-code-go/pkg/solver"
 )
 
@@ -17,4 +18,7 @@ func RegisterSolvers() {
 	// Register day 3 solvers
 	solver.RegisterSolver(solver.FormatKey(2025, 3, 1), d3.Part1)
 	solver.RegisterSolver(solver.FormatKey(2025, 3, 2), d3.Part2)
+	// Register day 4 solvers
+	solver.RegisterSolver(solver.FormatKey(2025, 4, 1), d4.Part1)
+	solver.RegisterSolver(solver.FormatKey(2025, 4, 2), d4.Part2)
 }
