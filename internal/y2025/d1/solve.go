@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/merijnf/advent-of-code-go/pkg/helper/str"
 	"github.com/merijnf/advent-of-code-go/pkg/solver"
 )
 
@@ -11,18 +12,18 @@ const left = "L"
 const right = "R"
 
 func Part1(ctx solver.PuzzleContext) (string, error) {
-	lines := strings.Split(ctx.Input, "\r\n")
+	lines := str.SplitLinesAndNormalize(ctx.Input, false)
 	position := 50
 	atZero := 0
 	for _, line := range lines {
-		if strings.HasPrefix(line, left) {
-			move, err := strconv.Atoi(strings.TrimPrefix(line, left))
+		if after, ok := strings.CutPrefix(line, left); ok {
+			move, err := strconv.Atoi(after)
 			if err != nil {
 				panic(err)
 			}
 			position -= move
-		} else if strings.HasPrefix(line, right) {
-			move, err := strconv.Atoi(strings.TrimPrefix(line, right))
+		} else if after, ok := strings.CutPrefix(line, right); ok {
+			move, err := strconv.Atoi(after)
 			if err != nil {
 				panic(err)
 			}
@@ -45,19 +46,19 @@ func Part1(ctx solver.PuzzleContext) (string, error) {
 }
 
 func Part2(ctx solver.PuzzleContext) (string, error) {
-	lines := strings.Split(ctx.Input, "\r\n")
+	lines := str.SplitLinesAndNormalize(ctx.Input, false)
 	position := 50
 	zeroCount := 0
 	atZero := false
 	for _, line := range lines {
-		if strings.HasPrefix(line, left) {
-			move, err := strconv.Atoi(strings.TrimPrefix(line, left))
+		if after, ok := strings.CutPrefix(line, left); ok {
+			move, err := strconv.Atoi(after)
 			if err != nil {
 				panic(err)
 			}
 			position -= move
-		} else if strings.HasPrefix(line, right) {
-			move, err := strconv.Atoi(strings.TrimPrefix(line, right))
+		} else if after, ok := strings.CutPrefix(line, right); ok {
+			move, err := strconv.Atoi(after)
 			if err != nil {
 				panic(err)
 			}

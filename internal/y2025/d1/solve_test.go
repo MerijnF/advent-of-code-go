@@ -1,4 +1,4 @@
-package d3
+package d1
 
 import (
 	"testing"
@@ -6,21 +6,27 @@ import (
 	"github.com/merijnf/advent-of-code-go/pkg/solver"
 )
 
-var INPUT = `987654321111111
-811111111111119
-234234234234278
-818181911112111`
+var INPUT = `L68
+L30
+R48
+L5
+R60
+L55
+L1
+L99
+R14
+L82`
 
 func TestPart1(t *testing.T) {
 	ctx := solver.PuzzleContext{
 		Input:    INPUT,
 		Part:     1,
 		Year:     2025,
-		Day:      3,
+		Day:      1,
 		Filename: "testinput.txt",
 	}
 
-	expected := "357"
+	expected := "3"
 	result, err := Part1(ctx)
 	if err != nil {
 		t.Fatalf("Part1 failed: %v", err)
@@ -35,11 +41,11 @@ func TestPart2(t *testing.T) {
 		Input:    INPUT,
 		Part:     2,
 		Year:     2025,
-		Day:      3,
+		Day:      1,
 		Filename: "testinput.txt",
 	}
 
-	expected := "3121910778619"
+	expected := "6"
 	result, err := Part2(ctx)
 	if err != nil {
 		t.Fatalf("Part2 failed: %v", err)

@@ -1,11 +1,5 @@
 package solver
 
-import (
-	"errors"
-	"fmt"
-	"os"
-)
-
 type PuzzleContext struct {
 	Key      string
 	Year     int
@@ -35,35 +29,4 @@ func Solve(year int, day int, part int) (string, error) {
 		Input:    input,
 	}
 	return solver(solverCtx)
-}
-
-var solvers = make(map[string]func(ctx PuzzleContext) (string, error))
-
-func GetSolver(key string) (func(ctx PuzzleContext) (string, error), error) {
-	solver, exists := solvers[key]
-	if !exists {
-		return nil, errors.New("no solver registered for key: " + key)
-	}
-	return solver, nil
-}
-
-func RegisterSolver(key string, solver func(ctx PuzzleContext) (string, error)) {
-	solvers[key] = solver
-}
-
-func FormatKey(year int, day int, part int) string {
-	return fmt.Sprintf("%d-%02d-%d", year, day, part)
-}
-
-func FormatFilename(year int, day int) string {
-	return fmt.Sprintf("advent_of_code_%d_%02d.txt", year, day)
-}
-
-func ReadInput(filename string) (string, error) {
-	filepath := "../../input/" + filename
-	input, err := os.ReadFile(filepath)
-	if err != nil {
-		return "", err
-	}
-	return string(input), nil
 }
